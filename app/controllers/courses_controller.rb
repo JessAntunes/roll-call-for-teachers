@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
     before_action :find_course, only: [:show, :edit, :update, :destroy]
-    before_action :find_lecturer, only: [:show, :edit, :update, :destroy]
+    before_action :find_lecturer
 
     def index
         @courses = Course.all
@@ -14,6 +14,7 @@ class CoursesController < ApplicationController
 
     def create
         @course = Course.new(course_params)
+        binding.pry
         if @course.save
             redirect_to @course
         else
@@ -41,7 +42,7 @@ class CoursesController < ApplicationController
     private
 
     def course_params
-        params.require(:course).permit(:subject, :student_id => [], :instructor_id)
+        params.require(:course).permit(:subject, :student_id, :lecturer_id)
     end 
 
     def find_course

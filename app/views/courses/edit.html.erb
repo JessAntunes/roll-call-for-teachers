@@ -1,3 +1,6 @@
 <h4>Edit Course</h4>
+<% if @course.errors.any? %>
+        <h5 class="error"><%= @course.errors.full_messages.to_sentence %></h5>
+<% end %>
 
 <%= render 'form', course: @course%>
