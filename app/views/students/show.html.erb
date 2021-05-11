@@ -1,0 +1,15 @@
+
+<h1>Student's Profile<h1>
+<br/>
+
+<p>Name: <%=@student.last_first%></p>
+<p>Email: <%=@student.email%></p>
+
+<%if student.courses.empty?%>
+    <p>Courses: None </p>
+<%else%>
+    <p>Courses: <br/>
+    <%@student.courses.each do |course|%>
+        <div><%=course.subject%></div>
+    <%end%>
+<%end%>

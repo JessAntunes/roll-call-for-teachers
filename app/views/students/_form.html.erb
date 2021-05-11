@@ -1,0 +1,16 @@
+<br>
+<% if @lecturer.errors.any? %>
+        <h5 class="error"><%= @lecturer.errors.full_messages.to_sentence %></h5>
+<% end %>
+
+<%=form_with model: lecturer do |f|%>
+    <%= f.label "First Name: " %>
+    <%= f.text_field :first_name %><br>
+    <%= f.label "Last Name: " %>
+    <%= f.text_field :last_name %><br>
+    <%= f.label "Email: " %>
+    <%= f.text_field :email %><br>
+    <%= f.label "Password: " %>
+    <%= f.password_field :password %><br>
+    <%= f.submit %>
+<%end%>
