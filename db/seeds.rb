@@ -8,10 +8,10 @@
 
 3.times do 
     Lecturer.create!(
+        password: ENV['SECRET_PASSWORD'],
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
-        password: ENV['SECRET_PASSWORD'],
-        email:
+        email: Faker::Internet.safe_email
     )
 end
 
@@ -19,7 +19,7 @@ end
     Student.create!(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
-        email:
+        email: Faker::Internet.free_email 
     )
 end
 
