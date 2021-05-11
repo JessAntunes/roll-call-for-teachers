@@ -1,11 +1,16 @@
 <h4>Course</h4>
 <br/>
 <div>Subject: <%= @course.subject%></div>
-<div>Lecturer: <%= @lecturer.fullname%></div>
+<div>Lecturer: <%= @course.lecturer.fullname%></div>
+<div>Day: <%=@course.day%></div>
 <div>Students Enrolled: <%= @course.students.count %></div>
-
+<br/>
+<%= link_to "Edit", edit_lecturer_course_path(@course.lecturer), class: "btn btn-outline-primary btn-sm"%>
+<br/>
+<br>
 Roll Call:
 
-<%= @course.students.each do |student|%>
+<% @course.students.each do |student|%>
     <div><%= link_to student.name, student_path(student) %></div>
 <%end%>
+

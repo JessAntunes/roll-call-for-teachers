@@ -1,11 +1,13 @@
 
 <br>
 
-    <%= form_with(model: [@lecturer, course], local: true) do |f| %>
+    <%= form_with url: lecturer_course_url(current_lecturer, @course) do |f| %>
     <%= f.label "Subject: " %>
     <%= f.text_field :subject %><br>
-    <%= f.collection_check_boxes :student_id, Student.all, :id, :last_name %>
-    <%= f.hidden_field :lecturer_id, value: current_lecturer.id %>
+    <%= f.label "Day: "%>
+    <%= f.text_field :day%><br>
+    <%= f.collection_check_boxes :student_ids, Student.all, :id, :name %>
+    <%= f.hidden_field :lecturer_id, value: current_lecturer.id %><br>
     <%= f.submit %>
 <%end%>
 

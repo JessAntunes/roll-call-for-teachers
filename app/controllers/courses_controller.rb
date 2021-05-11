@@ -1,48 +1,77 @@
 class CoursesController < ApplicationController
     before_action :find_course, only: [:show, :edit, :update, :destroy]
-    before_action :find_lecturer
+
 
     def index
         @courses = Course.all
     end
   
     def new
+        if params[:lecturer_id]
+            find_lecturer
+            @course = @lecturer.courses.build
+        else
+            redirect_to lecturer_path(@lecturer)
+        end
     end
 
     def show
+        if params[:lecturer_id]
+            find_lecturer
+        end
     end
 
     def create
-        @course = Course.new(course_params)
-        binding.pry
-        if @course.save
-            redirect_to @course
+        if params[:lecturer_id]
+            find_lecturer
+            @course = @lecturer.courses.build(course_params)
+        else
+            redirect_to lecturer_path(@lecturer)
+        end
+       
+        if @course.save 
+            if @lecturer
+                redirect_to lecturer_course_path(@lecturer, @course)
+            else
+                redirect_to lecturer_course_path(@course)
+            end 
         else
             render :new
         end
     end 
 
     def edit 
+        
     end 
   
     def update
-        @course.update(course_params)
-        if @course.save
-            redirect_to @course
+        if params[:lecturer_id]
+            find_lecturer
+            @course = @lecturer.courses.build(course_params)
+        else
+            redirect_to lecturer_path(@lecturer)
+        end
+    
+        if @course.update 
+            if @lecturer
+                redirect_to lecturer_course_path(@lecturer, @course)
+            else
+                redirect_to lecturer_course_path(@course)
+            end 
         else
             render :edit
-        end 
-    end
+        end
+    end 
 
     def delete
         @course.destroy
-        redirect_to courses_path
+        redirect_to lecturer_courses_path(@lecturer)
     end
 
     private
 
     def course_params
-        params.require(:course).permit(:subject, student_id:[], :lecturer_id, :day)
+        params.require(:course).permit(:subject, :lecturer_id, :day, :student_ids => [])
     end 
 
     def find_course
@@ -52,4 +81,5 @@ class CoursesController < ApplicationController
     def find_lecturer
         @lecturer = Lecturer.find_by_id(params[:lecturer_id])
     end
+
 end

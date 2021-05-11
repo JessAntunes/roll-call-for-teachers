@@ -4,7 +4,7 @@ class Student < ApplicationRecord
     
     def last_first
         full_name = self.name.split(' ')
-        "#{fullname[1]}, #{fullname[0]}"
+        "#{full_name[1]}, #{full_name[0]}"
     end
     
 end

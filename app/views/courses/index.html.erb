@@ -1,0 +1,7 @@
+<h2>All Courses Offered</h2>
+
+<%@courses.each do |c|%>
+    <div><%= link_to c.subject, lecturer_course_path(c.lecturer, c) %></div>
+    <div>Professor: <%= link_to c.lecturer.name, lecturer_path(c.lecturer) %></div>
+    <div>Day: <%=c.day %></div>
+<%end%>
