@@ -1,13 +1,8 @@
 class Course < ApplicationRecord
-  belongs_to :student
   belongs_to :lecturer
+  has_many :enrollments
+  has_many :students, through: :enrollments
 
-  def students
-    list = []
-    self.student.each do |s|
-      list << Student.find_by_id(s)
-    end
-    list
-  end
+
   
 end
