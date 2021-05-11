@@ -6,5 +6,6 @@
 
 Roll Call:
 
-<%= @course.student.each do |student|%>
-    <div><%= %>
+<%= @course.students.each do |student|%>
+    <div><%= link_to student.fullname, student_path(student) %></div>
+<%end%>

@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
     before_action :find_course, only: [:show, :edit, :update, :destroy]
+    before_action :find_lecturer, only: [:show, :edit, :update, :destroy]
 
     def index
         @courses = Course.all
@@ -14,7 +15,7 @@ class CoursesController < ApplicationController
     def create
         @course = Course.new(course_params)
         if @course.save
-            redirect_to course_path(@course)
+            redirect_to @course
         else
             render :new
         end
@@ -26,7 +27,7 @@ class CoursesController < ApplicationController
     def update
         @course.update(course_params)
         if @course.save
-            redirect_to course_path(@course)
+            redirect_to @course
         else
             render :edit
         end 
@@ -45,5 +46,9 @@ class CoursesController < ApplicationController
 
     def find_course
         @course = Course.find_by_id(params[:id])
-    end 
+    end
+
+    def find_lecturer
+        @lecturer = Lecturer.find_by_id(params[:lecturer_id])
+    end
 end
