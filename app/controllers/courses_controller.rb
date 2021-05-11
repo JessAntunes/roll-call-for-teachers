@@ -42,7 +42,7 @@ class CoursesController < ApplicationController
     private
 
     def course_params
-        params.require(:course).permit(:subject, :student_id, :lecturer_id)
+        params.require(:course).permit(:subject, student_id:[], :lecturer_id, :day)
     end 
 
     def find_course
