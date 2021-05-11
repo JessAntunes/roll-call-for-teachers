@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     helper_method :logged_in?
-    helper_method :current_user
+    helper_method :current_lecturer
 
     def home
         render "/home"
@@ -14,12 +14,12 @@ class ApplicationController < ActionController::Base
 
 
 
-    def current_user
-        @user ||= User.find_by_id(session[:user_id])
+    def current_lecturer
+        @lecturer ||= Lecturer.find_by_id(session[:lecturer_id])
     end
     
     def logged_in?
-        !current_user.nil?
+        !current_lecturer.nil?
     end
-    
+
 end
