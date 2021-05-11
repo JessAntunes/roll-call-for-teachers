@@ -1,0 +1,7 @@
+<%if @lecturer == current_lecturer%>
+    <h1> Welcome, Professor <%=@lecturer.last_name%>.</h1>
+<%else%>
+    <h1>Professor <%=@lecturer.fullname%>'s Profile<h1>
+<%end%>
+
+
