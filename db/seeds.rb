@@ -5,3 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+3.times do 
+    Lecturer.create!(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        password:
+        email:
+    )
+end
+
+50.times do
+    Student.create!(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        email:
+    )
+end
+
+puts "Seeded and Succeeded"
