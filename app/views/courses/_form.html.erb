@@ -1,0 +1,14 @@
+
+<br>
+<% if @course.errors.any? %>
+        <h5 class="error"><%= @course.errors.full_messages.to_sentence %></h5>
+<% end %>
+
+<%=form_with model: course do |f|%>
+    <%= f.label "Subject: " %>
+    <%= f.text_field :subject %><br>
+    <%= f.collection_check_boxes :student_id, Student.all, :id, :last_name, :first_name %>
+    <%= f.hidden_field :lecturer_id, value: current_lecturer.id %>
+    <%= f.submit %>
+<%end%>
+
