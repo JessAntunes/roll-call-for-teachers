@@ -1,9 +1,10 @@
 class Student < ApplicationRecord
-    has_many :courses
-    has_many :lecturers, through: :courses
+    has_many :enrollments
+    has_many :courses, through: :enrollments
     
     def last_first
-        "#{self.last_name}, #{self.first_name}"
+        full_name = self.name.split(' ')
+        "#{fullname[1]}, #{fullname[0]}"
     end
     
 end
