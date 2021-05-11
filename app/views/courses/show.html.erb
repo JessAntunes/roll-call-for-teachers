@@ -2,10 +2,10 @@
 <br/>
 <div>Subject: <%= @course.subject%></div>
 <div>Lecturer: <%= @lecturer.fullname%></div>
-<div>Students Enrolled: <%= @course.student.count %></div>
+<div>Students Enrolled: <%= @course.students.count %></div>
 
 Roll Call:
 
 <%= @course.students.each do |student|%>
-    <div><%= link_to student.fullname, student_path(student) %></div>
+    <div><%= link_to student.name, student_path(student) %></div>
 <%end%>

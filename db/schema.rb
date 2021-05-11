@@ -10,16 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_11_013158) do
+ActiveRecord::Schema.define(version: 2021_05_11_144803) do
 
   create_table "courses", force: :cascade do |t|
     t.string "subject"
-    t.integer "student_id", null: false
+    t.string "day"
     t.integer "lecturer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["lecturer_id"], name: "index_courses_on_lecturer_id"
-    t.index ["student_id"], name: "index_courses_on_student_id"
+  end
+
+  create_table "enrollments", force: :cascade do |t|
+    t.string "grade"
+    t.integer "course_id", null: false
+    t.integer "student_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["course_id"], name: "index_enrollments_on_course_id"
+    t.index ["student_id"], name: "index_enrollments_on_student_id"
   end
 
   create_table "lecturers", force: :cascade do |t|
@@ -32,13 +41,14 @@ ActiveRecord::Schema.define(version: 2021_05_11_013158) do
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
+    t.string "name"
     t.string "email"
+    t.string "degree"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "courses", "lecturers"
-  add_foreign_key "courses", "students"
+  add_foreign_key "enrollments", "courses"
+  add_foreign_key "enrollments", "students"
 end

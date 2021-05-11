@@ -4,10 +4,10 @@
 <% end %>
 
 <%=form_with model: student do |f|%>
-    <%= f.label "First Name: " %>
-    <%= f.text_field :first_name %><br>
-    <%= f.label "Last Name: " %>
-    <%= f.text_field :last_name %><br>
+    <%= f.label "Name: " %>
+    <%= f.text_field :name %><br>
+    <%= f.label "Degree: " %>
+    <%= f.text_field :degree %><br>
     <%= f.label "Email: " %>
     <%= f.text_field :email %><br>
     <%= f.submit %>

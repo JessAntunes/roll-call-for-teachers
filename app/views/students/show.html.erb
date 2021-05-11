@@ -3,13 +3,16 @@
 <br/>
 
 <p>Name: <%=@student.last_first%></p>
+<p>Degree: <%=@student.degree%></p>
 <p>Email: <%=@student.email%></p>
+
 
 <%if student.courses.empty?%>
     <p>Courses: None </p>
 <%else%>
     <p>Courses: <br/>
-    <%@student.courses.each do |course|%>
-        <div><%=course.subject%></div>
+    <%@student.enrollments.each do |e|%>
+        <div><%=e.course.subject%></div>
+        <div><%=e.grade%>
     <%end%>
 <%end%>

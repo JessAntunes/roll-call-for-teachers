@@ -7,7 +7,8 @@
 Courses: 
 <ol class="list-group list-group-flush">
 <%@lecturer.courses.each do |c|%>
-    <li class="list-group-item"> <%=link_to c.name, lecturer_list_path(@lecturer, c)%> </li>
+    <li class="list-group-item"> <%=link_to c.subject, lecturer_course_path(@lecturer, c)%> 
+    <p>Students Enrolled: <%=c.students.count%>/p></li>
 <%end%>
 </ol>
 

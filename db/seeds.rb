@@ -21,6 +21,7 @@ end
         lecturer_id: rand(1..3),
         day: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].sample
     )
+end
 
 50.times do
     Student.create!(
@@ -28,7 +29,7 @@ end
         email: Faker::Internet.free_email,
         degree: Faker::Educator.degree
     )
-    
+
 end
 
 puts "Seeded and Succeeded"
