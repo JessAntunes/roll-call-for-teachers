@@ -12,12 +12,11 @@
 <%else%>
     <h6>Courses: <br/>
     <%@student.enrollments.each do |e|%>
-        <h6><%=link_to e.course.subject, lecturer_course_path(e.course.lecturer, e.course)%></h6>
-        <h6>Grade: 
+        <h6><%=link_to e.course.subject, lecturer_course_path(e.course.lecturer, e.course)%></h6> 
         <%if e.grade.nil?%>
-            <h6><%=link_to "None", enrollment_path(e)%></h6>
+            <h6>Grade: <%=link_to "None", enrollment_path(e)%></h6>
         <%else%>
-            <h6><%=link_to e.grade, enrollment_path(e)%></h6>
+            <h6>Grade: <%=link_to e.grade, enrollment_path(e)%></h6>
         <%end%>
     <%end%>
 <%end%>
