@@ -24,6 +24,7 @@ gem 'dotenv-rails'
 gem 'bcrypt'
 gem 'pry'
 gem 'faker'
+gem 'omniauth-facebook'
 
 
 # Use Active Storage variant

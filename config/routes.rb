@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :students
   resources :lecturers do
-    resources :courses
+    resources :courses, only: [:new, :show, :create, :edit, :update, :destroy]
   end
+  resources :courses, only: [:index]
   resources :enrollments
 
   get '/', to: "application#home"
