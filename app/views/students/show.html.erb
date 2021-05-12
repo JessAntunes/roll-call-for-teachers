@@ -12,7 +12,7 @@
 <%else%>
     <p>Courses: <br/>
     <%@student.enrollments.each do |e|%>
-        <p><%=e.course.subject%></p>
+        <p><%=link_to e.course.subject, enrollment_path(e)%></p>
         <p>Grade: 
         <%if e.grade.nil?%>
             <p>None</p>
@@ -21,3 +21,5 @@
         <%end%>
     <%end%>
 <%end%>
+
+<%= link_to "Edit", edit_student_path(@student), class: "btn btn-outline-primary btn-sm"%>
