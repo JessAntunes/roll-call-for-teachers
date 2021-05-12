@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
 
 
     def index
-        @courses = Course.all
+        @courses = Course.all.order('subject ASC')
     end
   
     def new
