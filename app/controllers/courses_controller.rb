@@ -63,9 +63,9 @@ class CoursesController < ApplicationController
         end
     end 
 
-    def delete
+    def destroy
         @course.destroy
-        redirect_to lecturer_courses_path(@lecturer)
+        redirect_to lecturer_path(current_lecturer)
     end
 
     private
