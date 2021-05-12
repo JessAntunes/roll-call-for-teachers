@@ -25,7 +25,7 @@ end
 
 50.times do
     Student.create!(
-        name: Faker::Name.first_name,
+        name: Faker::Name.name,
         email: Faker::Internet.free_email,
         degree: Faker::Educator.degree
     )
