@@ -1,23 +1,23 @@
 
-<h1>Student's Profile<h1>
+<h3>Student's Profile<h3>
 <br/>
 
-<p>Name: <%=@student.last_first%></p>
-<p>Degree: <%=@student.degree%></p>
-<p>Email: <%=@student.email%></p>
+<h6>Name: <%=@student.last_first%></h6>
+<h6>Degree: <%=@student.degree%></h6>
+<h6>Email: <%=@student.email%></h6>
 
 
 <%if @student.courses.empty?%>
-    <p>Courses: None </p>
+    <h6>Courses: None </h6>
 <%else%>
-    <p>Courses: <br/>
+    <h6>Courses: <br/>
     <%@student.enrollments.each do |e|%>
-        <p><%=link_to e.course.subject, enrollment_path(e)%></p>
-        <p>Grade: 
+        <h6><%=link_to e.course.subject, lecturer_course_path(e.course.lecturer, e.course)%></h6>
+        <h6>Grade: 
         <%if e.grade.nil?%>
-            <p>None</p>
+            <h6><%=link_to "None", enrollment_path(e)%></h6>
         <%else%>
-            <%=e.grade%></p>
+            <h6><%=link_to e.grade, enrollment_path(e)%></h6>
         <%end%>
     <%end%>
 <%end%>
