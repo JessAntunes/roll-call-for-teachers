@@ -11,9 +11,36 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-    <nav class="navbar sticky-top navbar-dark bg-dark">
+    <%# <nav class="navbar sticky-top navbar-dark bg-dark">
       <a class="navbar-brand" href="#">Roll Call</a>
-    </nav>
+    </nav> %>
+    <nav class="navbar navbar-expand-lg sticky_top navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Roll Call</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/lecturers/<%=current_lecturer.id%>">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/lecturers/<%=current_lecturer.id%>/courses">Courses</a>
+        </li>
+        <%if logged_in?%>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+          </li>
+        <%else%>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+        <%end%>
+      </ul>
+    </div>
+  </div>
+</nav>
 
   <body>
     <%= yield %>

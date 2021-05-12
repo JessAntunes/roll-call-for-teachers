@@ -1,4 +1,4 @@
-<h4>Course</h4>   <%= link_to("Delete Course", lecturer_course_path(@course.lecturer, @course), method: :delete, class: "btn btn-outline-primary btn-sm", data:{confirm: "Are you sure you want to delete this course?"}) %>
+<h4>Course</h4>   
 <br/>
 <div>Subject: <%= @course.subject%></div>
 <div>Lecturer: <%= @course.lecturer.fullname%></div>
@@ -6,6 +6,7 @@
 <div>Students Enrolled: <%= @course.students.count %></div>
 <br/>
 <%= link_to "Edit", edit_lecturer_course_path(@course.lecturer), class: "btn btn-outline-primary btn-sm"%>
+<%= link_to("Delete Course", lecturer_course_path(@course.lecturer, @course, method: :delete, class: "btn btn-outline-primary btn-sm", data:{confirm: "Are you sure you want to delete this course?"}) %>
 <br/>
 <br>
 Roll Call:
