@@ -1,0 +1,8 @@
+<h3>Add/Edit Grade</h3>
+<br/>
+<%= render 'enrollment' %>
+<%=form_with model: @enrollment do |f|%>
+    <%=f.label "Grade: "%>
+    <%= f.select :grade, ["None", "A", "B", "C", "D", "F", "Incomplete", "Audit"] %>
+    <%= f.submit %>
+<%end%>
