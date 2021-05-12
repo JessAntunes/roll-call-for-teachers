@@ -1,7 +1,7 @@
 
 <h5>Course</h5>
 <h6>Subject: <%=link_to @enrollment.course.subject, lecturer_course_path(current_lecturer, @enrollment.course)%></h6>
-<h6>Lecturer: <%=link_to @enrollment.course.lecturer, lecturer_path(@enrollment.course.lecturer)%></h6>
+<h6>Lecturer: <%=link_to @lecturer.fullname, lecturer_path(@lecturer)%></h6>
 <h6>Day: <%=link_to @enrollment.course.day%></h6>
 <br/>
 

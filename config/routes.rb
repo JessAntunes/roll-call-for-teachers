@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  
-  resources :enrollments
   resources :students
   resources :lecturers do
     resources :courses
   end
+  resources :enrollments
 
   get '/', to: "application#home"
   get '/login', to: 'sessions#new', as: 'login'

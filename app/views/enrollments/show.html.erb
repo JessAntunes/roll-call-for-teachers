@@ -2,7 +2,12 @@
 <br/>
 
 <%= render 'enrollment'%>
-<h6>Grade: <%=link_to @enrollment.grade%></h6>
+<%if @enrollment.grade.nil?%>
+    <h6>Grade: None</h6>
+<%else%>
+    <h6>Grade: <%=@enrollment.grade%></h6>
+<%end%>
+<br/>
 
-<%= link_to "Add/Edit Grade", edit_enrollment_path(@enrollment), class: "btn btn-outline-primary btn-sm"%>
+<%= link_to "Add/Edit Grade", edit_enrollment_path(@enrollment), class: "btn btn-outline-primary btn-sm"%> 
 <%= link_to("Disenroll", enrollment_path(@enrollment), method: :delete, class: "btn btn-outline-primary btn-sm", data:{confirm: "Are you sure you want to remove student from the course?"}) %>

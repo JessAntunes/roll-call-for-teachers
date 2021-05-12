@@ -5,6 +5,7 @@ class EnrollmentsController < ApplicationController
     end
 
     def show
+        @lecturer = @enrollment.course.lecturer
     end
 
     def create
@@ -16,7 +17,8 @@ class EnrollmentsController < ApplicationController
         end
     end 
 
-    def edit 
+    def edit
+        @lecturer = @enrollment.course.lecturer
     end 
   
     def update
@@ -28,7 +30,7 @@ class EnrollmentsController < ApplicationController
         end 
     end
 
-    def delete
+    def destroy
         @enrollment.destroy
         redirect_to student_path(@enrollment.student)
     end
