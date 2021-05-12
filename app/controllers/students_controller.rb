@@ -5,19 +5,19 @@ class StudentsController < ApplicationController
         if logged_in?
             @students = Student.all
         else
-            redirect_to "/"
+            redirect_to "/login"
         end
     end
   
     def new
         if !logged_in?
-            redirect_to "/"
+            redirect_to "/login"
         end
     end
 
     def show
         if !logged_in?
-            redirect_to "/"
+            redirect_to "/login"
         end
     end
 
@@ -32,7 +32,7 @@ class StudentsController < ApplicationController
 
     def edit 
         if !logged_in?
-            redirect_to "/"
+            redirect_to "/login"
         end
     end 
   

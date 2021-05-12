@@ -3,7 +3,7 @@ class EnrollmentsController < ApplicationController
   
     def new
         if !logged_in?
-            redirect_to "/"
+            redirect_to "/login"
         end
     end
 
@@ -11,7 +11,7 @@ class EnrollmentsController < ApplicationController
         if logged_in?
             @lecturer = @enrollment.course.lecturer
         else
-            redirect_to "/"
+            redirect_to "/login"
         end
     end
 
@@ -28,7 +28,7 @@ class EnrollmentsController < ApplicationController
         if logged_in?
             @lecturer = @enrollment.course.lecturer
         else
-            redirect_to "/"
+            redirect_to "/login"
         end
     end 
   

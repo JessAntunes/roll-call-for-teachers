@@ -18,23 +18,14 @@ class LecturersController < ApplicationController
     end 
 
     def show
-        if logged_in?
-            @current_lecturer
-            if !@lecturer
-                redirect_to wrong_page
-            end
-        else
-            redirect_to "/"
+        if !logged_in?
+            redirect_to "/login"
         end
     end
   
     def edit 
         if logged_in?
-            if !@lecturer
-                redirect_to wrong_page
-            end
-        else
-            redirect_to "/"
+            redirect_to "/login"
         end
     end 
   
@@ -53,7 +44,7 @@ class LecturersController < ApplicationController
 
     def destroy
         @lecturer.destroy
-        redirect_to "/"
+        redirect_to "/login"
     end
 
     private

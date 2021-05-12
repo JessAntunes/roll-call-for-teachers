@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
         if logged_in?
         @courses = Course.all.order('subject ASC')
         else
-            redirect_to "/"
+            redirect_to "/login"
         end
     end
   
@@ -19,7 +19,7 @@ class CoursesController < ApplicationController
                 redirect_to lecturer_path(@lecturer)
             end
         else
-            redirect_to "/"
+            redirect_to "/login"
         end
     end
 
@@ -29,7 +29,7 @@ class CoursesController < ApplicationController
                 find_lecturer
             end
         else
-            redirect_to "/"
+            redirect_to "/login"
         end
     end
 
@@ -56,7 +56,7 @@ class CoursesController < ApplicationController
 
     def edit 
         if !logged_in?
-            redirect_to "/"
+            redirect_to "/login"
         end
     end 
   

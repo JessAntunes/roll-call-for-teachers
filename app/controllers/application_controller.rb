@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
 
     def current_lecturer
-        @lecturer ||= Lecturer.find_by_id(session[:lecturer_id])
+        @lecturer = Lecturer.find_by_id(session[:lecturer_id])
     end
     
     def logged_in?
