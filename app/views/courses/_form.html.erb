@@ -1,7 +1,6 @@
-
 <br>
 
-    <%= form_with url: lecturer_course_url(current_lecturer, @course) do |f| %>
+    <%= form_for @course, url: url do |f| %>
     <%= f.label "Subject: " %>
     <%= f.text_field :subject %><br>
     <%= f.label "Day: "%>
@@ -10,4 +9,3 @@
     <%= f.hidden_field :lecturer_id, value: current_lecturer.id %><br>
     <%= f.submit %>
 <%end%>
-

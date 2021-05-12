@@ -7,12 +7,17 @@
 <p>Email: <%=@student.email%></p>
 
 
-<%if student.courses.empty?%>
+<%if @student.courses.empty?%>
     <p>Courses: None </p>
 <%else%>
     <p>Courses: <br/>
     <%@student.enrollments.each do |e|%>
-        <div><%=e.course.subject%></div>
-        <div><%=e.grade%>
+        <p><%=e.course.subject%></p>
+        <p>Grade: 
+        <%if e.grade.nil?%>
+            <p>None</p>
+        <%else%>
+            <%=e.grade%></p>
+        <%end%>
     <%end%>
 <%end%>

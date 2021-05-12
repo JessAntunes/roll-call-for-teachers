@@ -3,4 +3,4 @@
         <h5 class="error"><%= @course.errors.full_messages.to_sentence %></h5>
 <% end %>
 
-<%= render 'form'%>
+<%= render partial: 'form', locals: { url: lecturer_course_path(current_lecturer, @course)}%>

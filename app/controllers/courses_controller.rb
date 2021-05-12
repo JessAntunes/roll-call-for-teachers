@@ -52,7 +52,7 @@ class CoursesController < ApplicationController
             redirect_to lecturer_path(@lecturer)
         end
     
-        if @course.update 
+        if @course.update(course_params)
             if @lecturer
                 redirect_to lecturer_course_path(@lecturer, @course)
             else
