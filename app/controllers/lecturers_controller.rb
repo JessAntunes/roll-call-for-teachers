@@ -6,9 +6,6 @@ class LecturersController < ApplicationController
         @lecturer = Lecturer.new
     end
 
-    def show
-        @current_lecturer
-    end
   
     def create
         @lecturer = Lecturer.new(lecturer_params)
@@ -21,15 +18,23 @@ class LecturersController < ApplicationController
     end 
 
     def show
-        @current_lecturer
-        if !@lecturer
-            redirect_to wrong_page
+        if logged_in?
+            @current_lecturer
+            if !@lecturer
+                redirect_to wrong_page
+            end
+        else
+            redirect_to "/"
         end
     end
   
     def edit 
-        if !@lecturer
-            redirect_to wrong_page
+        if logged_in?
+            if !@lecturer
+                redirect_to wrong_page
+            end
+        else
+            redirect_to "/"
         end
     end 
   
@@ -48,7 +53,7 @@ class LecturersController < ApplicationController
 
     def destroy
         @lecturer.destroy
-        redirect_to "/home"
+        redirect_to "/"
     end
 
     private

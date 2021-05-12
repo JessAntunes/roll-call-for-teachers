@@ -13,4 +13,7 @@ Courses:
 </ol>
 
 <br>
-<%= link_to "New Course", new_lecturer_course_path(@lecturer), class: "btn btn-outline-primary btn-sm"%>
+
+<%if @lecturer == current_lecturer%>
+    <%= link_to "New Course", new_lecturer_course_path(@lecturer), class: "btn btn-outline-primary btn-sm"%>
+<%end%>

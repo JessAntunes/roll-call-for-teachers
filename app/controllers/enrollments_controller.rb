@@ -2,10 +2,17 @@ class EnrollmentsController < ApplicationController
     before_action :find_enrollment, only: [:show, :edit, :update, :destroy]
   
     def new
+        if !logged_in?
+            redirect_to "/"
+        end
     end
 
     def show
-        @lecturer = @enrollment.course.lecturer
+        if logged_in?
+            @lecturer = @enrollment.course.lecturer
+        else
+            redirect_to "/"
+        end
     end
 
     def create
@@ -18,7 +25,11 @@ class EnrollmentsController < ApplicationController
     end 
 
     def edit
-        @lecturer = @enrollment.course.lecturer
+        if logged_in?
+            @lecturer = @enrollment.course.lecturer
+        else
+            redirect_to "/"
+        end
     end 
   
     def update

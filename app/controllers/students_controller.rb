@@ -2,13 +2,23 @@ class StudentsController < ApplicationController
     before_action :find_student, only: [:show, :edit, :update, :destroy]
 
     def index
-        @students = Student.all
+        if logged_in?
+            @students = Student.all
+        else
+            redirect_to "/"
+        end
     end
   
     def new
+        if !logged_in?
+            redirect_to "/"
+        end
     end
 
     def show
+        if !logged_in?
+            redirect_to "/"
+        end
     end
 
     def create
@@ -21,6 +31,9 @@ class StudentsController < ApplicationController
     end 
 
     def edit 
+        if !logged_in?
+            redirect_to "/"
+        end
     end 
   
     def update

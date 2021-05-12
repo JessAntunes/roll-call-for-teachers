@@ -3,64 +3,82 @@ class CoursesController < ApplicationController
 
 
     def index
+        if logged_in?
         @courses = Course.all.order('subject ASC')
+        else
+            redirect_to "/"
+        end
     end
   
     def new
-        if params[:lecturer_id]
-            find_lecturer
-            @course = @lecturer.courses.build
+        if logged_in?
+            if params[:lecturer_id]
+                find_lecturer
+                @course = @lecturer.courses.build
+            else
+                redirect_to lecturer_path(@lecturer)
+            end
         else
-            redirect_to lecturer_path(@lecturer)
+            redirect_to "/"
         end
     end
 
     def show
-        if params[:lecturer_id]
-            find_lecturer
+        if logged_in?
+            if params[:lecturer_id]
+                find_lecturer
+            end
+        else
+            redirect_to "/"
         end
     end
 
     def create
-        if params[:lecturer_id]
-            find_lecturer
-            @course = @lecturer.courses.build(course_params)
-        else
-            redirect_to lecturer_path(@lecturer)
-        end
-       
-        if @course.save 
-            if @lecturer
-                redirect_to lecturer_course_path(@lecturer, @course)
+        
+            if params[:lecturer_id]
+                find_lecturer
+                @course = @lecturer.courses.build(course_params)
             else
-                redirect_to lecturer_course_path(@course)
-            end 
-        else
-            render :new
-        end
+                redirect_to lecturer_path(@lecturer)
+            end
+        
+            if @course.save 
+                if @lecturer
+                    redirect_to lecturer_course_path(@lecturer, @course)
+                else
+                    redirect_to lecturer_course_path(@course)
+                end 
+            else
+                render :new
+            end
+
     end 
 
     def edit 
-        
+        if !logged_in?
+            redirect_to "/"
+        end
     end 
   
     def update
-        if params[:lecturer_id]
-            find_lecturer
-            @course = @lecturer.courses.build(course_params)
-        else
-            redirect_to lecturer_path(@lecturer)
-        end
-    
-        if @course.update(course_params)
-            if @lecturer
-                redirect_to lecturer_course_path(@lecturer, @course)
+        
+            if params[:lecturer_id]
+                find_lecturer
+                @course = @lecturer.courses.build(course_params)
             else
-                redirect_to lecturer_course_path(@course)
-            end 
-        else
-            render :edit
-        end
+                redirect_to lecturer_path(@lecturer)
+            end
+        
+            if @course.update(course_params)
+                if @lecturer
+                    redirect_to lecturer_course_path(@lecturer, @course)
+                else
+                    redirect_to lecturer_course_path(@course)
+                end 
+            else
+                render :edit
+            end
+       
     end 
 
     def destroy
