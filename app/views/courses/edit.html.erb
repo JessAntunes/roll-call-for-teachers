@@ -1,6 +1,10 @@
+<br>
+<div class="container bg-light">
 <h4>Edit Course</h4>
 <% if @course.errors.any? %>
         <h5 class="error"><%= @course.errors.full_messages.to_sentence %></h5>
 <% end %>
 
 <%= render partial: 'form', locals: { l_c: lecturer_course_path(current_lecturer, @course)}%>
+<br>
+</div>

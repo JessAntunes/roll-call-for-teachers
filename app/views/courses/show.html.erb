@@ -1,19 +1,28 @@
-<h4>Course</h4>   
-<br/>
-<div>Subject: <%= @course.subject%></div>
-<div>Lecturer: <%= @course.lecturer.fullname%></div>
-<div>Day: <%=@course.day%></div>
-<div>Students Enrolled: <%= @course.students.count %></div>
-<br/>
-<%= link_to "Edit", edit_lecturer_course_path(@course.lecturer), class: "btn btn-outline-primary btn-sm"%>
-<%if @course.lecturer == current_lecturer%>
-    <%= link_to "Delete Course", lecturer_course_path(@course.lecturer, @course), method: :delete, class: "btn btn-outline-primary btn-sm", data:{confirm: "Are you sure you want to delete this course?"} %>
-<%end%>
-<br/>
-<br>
-Roll Call:
+<div class="container bg-light">
+    <br>
+    <div class="row">
+        <div class="col-5 align">
+            <h2>Course</h2>   
+            <br/>
+            <div>Subject: <%= @course.subject%></div>
+            <div>Lecturer: <%= @course.lecturer.fullname%></div>
+            <div>Day: <%=@course.day%></div>
+            <div>Students Enrolled: <%= @course.students.count %></div>
+            <br/>
+            <%= link_to "Edit", edit_lecturer_course_path(@course.lecturer), class: "btn btn-outline-primary btn-sm"%>
+            <%if @course.lecturer == current_lecturer%>
+                <%= link_to "Delete Course", lecturer_course_path(@course.lecturer, @course), method: :delete, class: "btn btn-outline-primary btn-sm", data:{confirm: "Are you sure you want to delete this course?"} %>
+            <%end%>
+        </div>
+        
+        <div class="col">
+            <br>
+            <h4>Roll Call:</h4>
 
-<% @course.students.each do |student|%>
-    <div><%= link_to student.name, student_path(student) %></div>
-<%end%>
-
+            <% @course.students.each do |student|%>
+                <div><%= link_to student.name, student_path(student) %></div>
+            <%end%>
+            <br>
+        </div>
+    </div>
+</div>
