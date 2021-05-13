@@ -24,8 +24,7 @@ gem 'dotenv-rails'
 gem 'bcrypt'
 gem 'pry'
 gem 'faker'
-gem 'omniauth'
-gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection"
 
 

@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       end
     end
 
-    def facebook
+    def google
       @lecturer = Lecturer.find_or_create_by(email: auth["info"]["email"]) do |lecturer| 
           lecturer.password =  SecureRandom.hex(10)
       end 
@@ -22,7 +22,8 @@ class SessionsController < ApplicationController
           session[:lecturer_id] = @lecturer.id
           redirect_to lecturer_path(@lecturer) 
       else 
-          redirect_to "/login"
+          
+          redirect_to "/"
       end 
   end 
   
