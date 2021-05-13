@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       @lecturer = Lecturer.new(lecturer_params)
       if @lecturer.save 
           session[:lecturer_id] = @lecturer.id
-          redirect_to movies_path
+          redirect_to lecturer_path(@lecturer)
       else 
           @error = @lecturer.errors.full_messages
           render :new
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       end 
       if @lecturer && @lecturer.id
           session[:lecturer_id] = @lecturer.id
-          redirect_to movies_path 
+          redirect_to lecturer_path(@lecturer) 
       else 
           redirect_to "/login"
       end 
