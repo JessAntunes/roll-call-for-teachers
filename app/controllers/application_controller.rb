@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     end
 
 
-
+    private
 
     def current_lecturer
         Lecturer.find_by_id(session[:lecturer_id])
