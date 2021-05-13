@@ -1,8 +1,7 @@
 class SessionsController < ApplicationController
-  skip_before_action :verified_lecturer, only: [:new, :create]
+  
     def new
     end
-    
     
     def create
       @lecturer = Lecturer.new(lecturer_params)

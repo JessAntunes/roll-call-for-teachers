@@ -25,7 +25,7 @@ gem 'bcrypt'
 gem 'pry'
 gem 'faker'
 gem 'omniauth'
-gem 'omniauth-facebook'
+gem 'omniauth-github'
 gem "omniauth-rails_csrf_protection"
 
 
