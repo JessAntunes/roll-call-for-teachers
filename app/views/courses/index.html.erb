@@ -1,7 +1,28 @@
-<h2>All Courses Offered</h2> 
+<div class="container ">
+    <br> 
+    <div class="row"> 
+        <div class="col-2"> 
+        </div>
+       <div class="col-1 bg-light"> 
+        </div>
 
-<%@courses.each do |c|%>
-    <div><%= link_to c.subject, lecturer_course_path(c.lecturer, c) %></div>
-    <div>Professor: <%= link_to c.lecturer.fullname, lecturer_path(c.lecturer) %></div>
-    <div>Day: <%=c.day %></div>
-<%end%>
+        <div class="col-6 bg-light">
+        <br>
+            <h1 class="text-center">All Courses Offered</h1> 
+            <br>
+            <ol class="list-group list-group-numbered">
+                <%@courses.each do |c|%>
+                    <li class="list-group-item d-flex justify-content-between align-items-start"> 
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold"><%= link_to c.subject, lecturer_course_path(c.lecturer, c) %></div>
+                            <div>Professor: <%= link_to c.lecturer.fullname, lecturer_path(c.lecturer) %></div>
+                        </div>
+                        <span class="badge bg-light rounded-pill"><%=c.day %></span>
+                    </li>
+                <%end%>
+            </ol>
+        </div>
+        <div class="col-1 bg-light"> 
+        </div>
+   </div>
+</div>
