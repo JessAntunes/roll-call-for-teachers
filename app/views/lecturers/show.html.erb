@@ -1,29 +1,35 @@
-<br>
+<br><br>
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col-6 text-center">
             <%if @lecturer == current_lecturer%>
-                <h1> Welcome, Professor <%=@lecturer.last_name%>.</h1>
-                <%= link_to "Edit Profile", edit_lecturer_path, class: "btn btn-outline-primary btn-sm"%>
+                <h1 class="display-6"> Welcome, Professor <%=@lecturer.last_name%></h1>
+                <%= link_to "Edit Profile", edit_lecturer_path, class: "btn btn-outline-dark btn-sm"%> <%= link_to "New Course", new_lecturer_course_path(@lecturer), class: "btn btn-outline-dark btn-sm"%>
             <%else%>
-                <h1>Professor <%=@lecturer.fullname%>'s Profile<h1>
+                <h1 class="display-6">Professor <%=@lecturer.fullname%>'s Profile<h1>
             <%end%>
             <br/><br>
-        
-
-            Courses: 
-            <ol class="list-group list-group-flush">
-            <%@lecturer.courses.each do |c|%>
-                <li class="list-group-item"> <%=link_to c.subject, lecturer_course_path(@lecturer, c)%> 
-                <p>Students Enrolled: <%=c.students.count%></p></li>
-            <%end%>
-            </ol>
-
-            <br>
-
-            <%if @lecturer == current_lecturer%>
-                <%= link_to "New Course", new_lecturer_course_path(@lecturer), class: "btn btn-outline-primary btn-sm"%>
-            <%end%>
         </div>
-    </div>
+    </div>   
+
+        <div class="row">
+            <div class="col-6">
+                <h4>Courses: </h4>
+                <ol class="list-group list-group-numbered">
+                <%@lecturer.courses.each do |c|%>
+                    <li class="list-group-item d-flex justify-content-between align-items-start"> 
+                        <div class="ms-2 me-auto">
+                            <div class="fw-bold"><%=link_to c.subject, lecturer_course_path(@lecturer, c)%></div>
+                            <p>Students Enrolled: <%=c.students.count%></p>
+                        </div>
+                        <span class="badge bg-light rounded-pill"><%=c.day%></span>
+                    </li>
+                <%end%>
+                </ol>
+
+                <br>
+            </div>
+            
+        </div>
+    
 </div>
