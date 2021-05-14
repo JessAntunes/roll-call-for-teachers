@@ -1,5 +1,38 @@
-<h3>Student's Currently Enrolled</h3>
-<br/>
-<%@students.order_by_abc.each do |student|%>
-    <div><%= link_to student.name, student_path(student) %></div>
-<%end%>
+<br>
+<div class="row">
+    <div class="col"></div>
+    <div class="col text-center">
+        <h3>Student's Currently Enrolled</h3>
+        <h5 class="text-muted">(with number of classes)</h5>
+        
+        <br/><br>
+    </div>
+    <div class="col text-center"><%=link_to "Add New Student", new_student_path, class: "btn btn-outline-dark btn-sm"%></div>
+
+</div>
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col-8 bg-light">
+    <br>
+        <div class="row">
+            
+            <div class="col"></div>
+        
+            <div class="col-6">
+                <ul class="list-group">
+                    <%@students.order_by_abc.each do |student|%>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <%= link_to student.name, student_path(student) %>
+                            <span class="badge badge-warning badge-pill"><%=student.enrollments.count%></span>
+                        </li>
+                    <%end%>
+                </ul>
+            </div>
+
+            <div class="col"></div>
+        </div>
+    </div>
+    <div class="col"></div>
+</div>
+
