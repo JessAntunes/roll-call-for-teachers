@@ -1,25 +1,36 @@
+<div class="container bg-light">
+    <br><br>
+    <div class="row">
+        <div class="col-2">
+        </div>
+        <div class="col-5 ">
+            <h1 class="display-6">Student Profile<h1>
+            
+            <h6><strong>Name: </strong><%=@student.last_first%></h6>
+            <h6><strong>Degree:</strong> <%=@student.degree%></h6>
+            <h6><strong>Email: </strong><%=@student.email%></h6>
+            <%= link_to "Edit Profile", edit_student_path(@student), class: "btn btn-outline-dark btn-sm"%>
+            <br>
+            <br>
+        </div>
 
-<h3>Student Profile<h3>
-
-<br>
-<h6>Name: <%=@student.last_first%></h6>
-<h6>Degree: <%=@student.degree%></h6>
-<h6>Email: <%=@student.email%></h6>
-<%= link_to "Edit Profile", edit_student_path(@student), class: "btn btn-outline-dark btn-sm"%>
-<br>
-<br>
-<%if @student.courses.empty?%>
-    <h6>Courses: None </h6>
-<%else%>
-    <h5>Courses <small class="text-muted">(click grade to edit)</small><h5>
-    <%@student.enrollments.each do |e|%>
-        <h6><%=link_to e.course.subject, lecturer_course_path(e.course.lecturer, e.course)%></h6> 
-        <%if e.grade.nil?%>
-            <h6>Grade: <%=link_to "None", enrollment_path(e)%></h6>
-        <%else%>
-            <h6>Grade: <%=link_to e.grade, enrollment_path(e)%></h6>
-        <%end%>
-    <%end%>
-<%end%>
-<br>
-<%= link_to "Edit", edit_student_path(@student), class: "btn btn-outline-dark btn-sm"%>
+        <div class="col">
+        <br>
+            <%if @student.courses.empty?%>
+                <h3>Courses: None </h3>
+            <%else%>
+                <h3>Courses <small class="text-muted">(click grade to edit)</small><h3>
+                <%@student.enrollments.each do |e|%>
+                    <h6><%=link_to e.course.subject, lecturer_course_path(e.course.lecturer, e.course)%></h6> 
+                    <%if e.grade.nil?%>
+                        <h6>Grade: <%=link_to "None", enrollment_path(e)%></h6>
+                    <%else%>
+                        <h6>Grade: <%=link_to e.grade, enrollment_path(e)%></h6>
+                    <%end%>
+                <%end%>
+            <%end%>
+            <%= link_to "Edit", edit_student_path(@student), class: "btn btn-outline-dark btn-sm"%>
+            <br><br><br>
+        </div>
+    </div>
+</div>

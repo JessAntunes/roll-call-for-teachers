@@ -19,7 +19,7 @@
         <div class="col">
             <h2>Students Enrolled:</h2>
 
-            <% @course.students.each do |student|%>
+            <% @course.students.order_by_abc.each do |student|%>
                 <div><%= link_to student.name, student_path(student) %></div>
             <%end%>
             <br>
