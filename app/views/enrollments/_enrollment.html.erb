@@ -1,9 +1,9 @@
 
-<h5>Course</h5>
-<h6>Subject: <%=link_to @enrollment.course.subject, lecturer_course_path(current_lecturer, @enrollment.course)%></h6>
-<h6>Lecturer: <%=link_to @lecturer.fullname, lecturer_path(@lecturer)%></h6>
-<h6>Day: <%=link_to @enrollment.course.day%></h6>
+<h4>Course</h4>
+<h6><strong>Subject: </strong><%=link_to @enrollment.course.subject, lecturer_course_path(current_lecturer, @enrollment.course)%></h6>
+<h6><strong>Lecturer: </strong><%=link_to @lecturer.fullname, lecturer_path(@lecturer)%></h6>
+<h6><strong>Day: </strong><%= @enrollment.course.day%></h6>
 <br/>
 
-<h5>Grade</h6>
+<h4>Grade</h4>
 <h6>Student: <%=link_to @enrollment.student.name, student_path(@enrollment.student)%></h6>
