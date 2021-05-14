@@ -7,6 +7,9 @@
     <div class = "col bg-light">
         <br>
         <h4>Edit Profile</h4>
+        <% if @lecturer.errors.any? %>
+        <h5 class="error"><%= @lecturer.errors.full_messages.to_sentence %></h5>
+<% end %>
 
         <%= render 'form', lecturer: @lecturer%>
                     <br>

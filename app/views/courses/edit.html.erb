@@ -1,5 +1,11 @@
+
 <br>
-<div class="container bg-light">
+ <div class="row">
+    <div class="col-2"></div>
+    <div class="col-2 bg-light"></div>
+
+    <div class = "col bg-light">
+        <br>
 <h4>Edit Course</h4>
 <% if @course.errors.any? %>
         <h5 class="error"><%= @course.errors.full_messages.to_sentence %></h5>
@@ -7,4 +13,10 @@
 
 <%= render partial: 'form', locals: { l_c: lecturer_course_path(current_lecturer, @course)}%>
 <br>
+    </div>
+
+    <div class="col-1 bg-light"></div>
+
+     <div class="col-2"></div>
+     
 </div>
