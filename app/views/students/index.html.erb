@@ -1,5 +1,5 @@
 <h3>Student's Currently Enrolled</h3>
 <br/>
-<%@students.order_by('name').each do |student|%>
+<%@students.order_by_abc.each do |student|%>
     <div><%= link_to student.name, student_path(student) %></div>
 <%end%>

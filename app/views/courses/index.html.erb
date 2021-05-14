@@ -17,7 +17,7 @@
                             <div class="fw-bold"><%= link_to c.subject, lecturer_course_path(c.lecturer, c) %></div>
                             <div>Professor: <%= link_to c.lecturer.fullname, lecturer_path(c.lecturer) %></div>
                         </div>
-                        <span class="badge bg-light rounded-pill"><%=c.day %></span>
+                        <span class="badge bg-warning rounded-pill"><%=c.day %></span>
                     </li>
                 <%end%>
             </ol>

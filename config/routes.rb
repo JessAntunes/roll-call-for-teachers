@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   match '/auth/:provider/callback', to: 'sessions#google', via: [:get, :post] 
   get '/:anything', to: "application#wrong_page"
+
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

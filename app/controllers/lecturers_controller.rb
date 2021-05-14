@@ -1,6 +1,6 @@
 class LecturersController < ApplicationController
     before_action :find_lecturer, only: [:show, :edit, :update, :destroy]
-    
+    before_action :logged_in?
   
     def new
         @lecturer = Lecturer.new
@@ -18,27 +18,23 @@ class LecturersController < ApplicationController
     end 
 
     def show
-        if !logged_in?
+        if !@lecturer
             redirect_to "/login"
         end
     end
   
     def edit 
-        if logged_in?
+        if !@lecturer
             redirect_to "/login"
         end
     end 
   
     def update
-        if @lecturer
-            @lecturer.update(lecturer_params)
-            if @lecturer.errors.any?
-                render :edit
-            else
-                redirect_to @lecturer
-            end
-        else
+        @lecturer.update(lecturer_params)
+        if @lecturer.errors.any?
             render :edit
+        else
+            redirect_to @lecturer
         end
     end
 
