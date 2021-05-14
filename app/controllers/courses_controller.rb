@@ -24,7 +24,7 @@ class CoursesController < ApplicationController
     end
 
     def show
-        if logged_in?
+        if logged_in? && @course
             if params[:lecturer_id]
                 find_lecturer
             end
@@ -55,30 +55,28 @@ class CoursesController < ApplicationController
     end 
 
     def edit 
-        if !logged_in?
+        if !logged_in? || !@course
             redirect_to "/login"
         end
     end 
   
     def update
+        if params[:lecturer_id]
+            find_lecturer
+            @course = @lecturer.courses.build(course_params)
+        else
+            redirect_to lecturer_path(@lecturer)
+        end
         
-            if params[:lecturer_id]
-                find_lecturer
-                @course = @lecturer.courses.build(course_params)
+        if @course.update(course_params)
+            if @lecturer
+                redirect_to lecturer_course_path(@lecturer, @course)
             else
-                redirect_to lecturer_path(@lecturer)
-            end
-        
-            if @course.update(course_params)
-                if @lecturer
-                    redirect_to lecturer_course_path(@lecturer, @course)
-                else
-                    redirect_to lecturer_course_path(@course)
-                end 
-            else
-                render :edit
-            end
-       
+                redirect_to lecturer_course_path(@course)
+            end 
+        else
+            render :edit
+        end
     end 
 
     def destroy
