@@ -44,11 +44,13 @@ class CoursesController < ApplicationController
         
             if @course.save 
                 if @lecturer
+                    flash[:notice] = "Course saved successfully."
                     redirect_to lecturer_course_path(@lecturer, @course)
                 else
                     redirect_to lecturer_course_path(@course)
                 end 
             else
+                flash[:notice] = "Please try again."
                 render :new
             end
 
@@ -70,17 +72,20 @@ class CoursesController < ApplicationController
         
         if @course.update(course_params)
             if @lecturer
+                flash[:notice] = "Update successful."
                 redirect_to lecturer_course_path(@lecturer, @course)
             else
                 redirect_to lecturer_course_path(@course)
             end 
         else
+            flash[:notice] = "Please try again."
             render :edit
         end
     end 
 
     def destroy
         @course.destroy
+        flash[:notice] = "Course deleted successfully."
         redirect_to lecturer_path(current_lecturer)
     end
 
