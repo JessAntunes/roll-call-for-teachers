@@ -1,13 +1,26 @@
-<h3>Enrollment</h3>
-<br/>
+<br>
+ <div class="row">
+    <div class="col-2"></div>
+    <div class="col-2 bg-light"></div>
 
-<%= render 'enrollment'%>
-<%if @enrollment.grade.nil?%>
-    <h6>Grade: None</h6>
-<%else%>
-    <h6>Grade: <%=@enrollment.grade%></h6>
-<%end%>
-<br/>
+    <div class = "col bg-light">
+        <br>
+            <h2>Enrollment</h2>
+            <br/>
 
-<%= link_to "Add/Edit Grade", edit_enrollment_path(@enrollment), class: "btn btn-outline-primary btn-sm"%> 
-<%= link_to("Disenroll", enrollment_path(@enrollment), method: :delete, class: "btn btn-outline-primary btn-sm", data:{confirm: "Are you sure you want to remove student from the course?"}) %>
+            <%= render 'enrollment'%>
+            <%if @enrollment.grade.nil?%>
+                <h6>Grade: None</h6>
+            <%else%>
+                <h6>Grade: <%=@enrollment.grade%></h6>
+            <%end%>
+            <br/>
+
+            <%= link_to "Add/Edit Grade", edit_enrollment_path(@enrollment), class: "btn btn-outline-dark btn-sm"%> 
+            <%= link_to("Disenroll", enrollment_path(@enrollment), method: :delete, class: "btn btn-outline-dark btn-sm", data:{confirm: "Are you sure you want to remove student from the course?"}) %>
+            <br><br>
+    </div>
+    <div class="col-1 bg-light"></div>
+
+     <div class="col-2"></div>
+</div>
