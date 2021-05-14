@@ -10,6 +10,7 @@
             <h6><strong>Degree:</strong> <%=@student.degree%></h6>
             <h6><strong>Email: </strong><%=@student.email%></h6>
             <%= link_to "Edit Profile", edit_student_path(@student), class: "btn btn-outline-dark btn-sm"%>
+            <%= link_to "Edit", edit_student_path(@student), class: "btn btn-outline-dark btn-sm"%>
             <br>
             <br>
         </div>
@@ -29,7 +30,7 @@
                     <%end%>
                 <%end%>
             <%end%>
-            <%= link_to "Edit", edit_student_path(@student), class: "btn btn-outline-dark btn-sm"%>
+            
             <br><br><br>
         </div>
     </div>
