@@ -2,30 +2,30 @@ class EnrollmentsController < ApplicationController
     before_action :find_enrollment, only: [:show, :edit, :update, :destroy]
   
     def new
+        redirect_to "/wrong_page"
+    end
+
+    def show
         if !logged_in?
             redirect_to "/login"
         end
     end
 
-    def show
-        if logged_in?
-            @lecturer = @enrollment.course.lecturer
-        else
-            redirect_to "/login"
-        end
+    def index
+        redirect_to "wrong_page"
     end
 
-    def create
-        @enrollment = Enrollment.new(enrollment_params)
-        if @enrollment.save
-            redirect_to student_path(@enrollment.student)
-        else
-            render :new
-        end
-    end 
+    # def create
+    #     @enrollment = Enrollment.new(enrollment_params)
+    #     if @enrollment.save
+    #         redirect_to student_path(@enrollment.student)
+    #     else
+    #         render :new
+    #     end
+    # end 
 
     def edit
-        if logged_in?
+        if logged_in? && @enrollment
             @lecturer = @enrollment.course.lecturer
         else
             redirect_to "/login"
