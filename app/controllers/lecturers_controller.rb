@@ -1,9 +1,14 @@
 class LecturersController < ApplicationController
     before_action :find_lecturer, only: [:show, :edit, :update, :destroy]
-    before_action :logged_in?
+    
   
     def new
-        @lecturer = Lecturer.new
+        if logged_in?
+            @lecturer = Lecturer.new
+        else
+            flash[:error] = "Please login."
+            redirect_to "/"
+        end
     end
 
   
@@ -24,23 +29,25 @@ class LecturersController < ApplicationController
     end
   
     def edit 
-        if !@lecturer
-            redirect_to "/login"
+        if !@lecturer || @lecturer != current_lecturer
+                redirect_to "/wrong_page"
         end
     end 
   
     def update
         @lecturer.update(lecturer_params)
-        if @lecturer.errors.any?
-            render :edit
-        else
+        if @lecturer.save
+            flash[:notice] = "Profile updated successfully."
             redirect_to @lecturer
+        else
+            flash[:error] = "Please try again."
+            render :edit
         end
     end
 
     def destroy
         @lecturer.destroy
-        redirect_to "/login"
+        redirect_to "/"
     end
 
     private

@@ -1,16 +1,29 @@
 class StudentsController < ApplicationController
     before_action :find_student, only: [:show, :edit, :update, :destroy]
-    before_action :logged_in?
 
     def index
-        @students = Student.all
+        if logged_in?
+            @students = Student.all
+        else
+            flash[:error] = "Please login."
+            redirect_to "/"
+        end
     end
   
     def new
+        if logged_in?
+            @student = Student.new
+        else
+            flash[:error] = "Please login."
+            redirect_to "/"
+        end
     end
 
     def show
-       
+        if !@lecturer
+            flash[:error] = "Please login."
+            redirect_to "/"
+        end
     end
 
     def create
@@ -18,27 +31,31 @@ class StudentsController < ApplicationController
         if @student.save
             redirect_to student_path(@student)
         else
+            flash[:error] = "Please try again."
             render :new
         end
     end 
 
     def edit 
-        if !logged_in?
-            redirect_to "/login"
+        if !logged_in? 
+            redirect_to "/"
         end
     end 
   
     def update
         @student.update(student_params)
         if @student.save
+            flash[:notice] = "Student updated successfully."
             redirect_to student_path(@student)
         else
+            flash[:notice] = "Please try again."
             render :edit
         end 
     end
 
     def delete
         @student.destroy
+        flash[:notice] = "Student has been deleted successfully."
         redirect_to students_path
     end
 
