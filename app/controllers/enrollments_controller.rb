@@ -9,6 +9,7 @@ class EnrollmentsController < ApplicationController
         if !logged_in?
             redirect_to "/login"
         end
+        @lecturer = @enrollment.course.lecturer
     end
 
     def index
