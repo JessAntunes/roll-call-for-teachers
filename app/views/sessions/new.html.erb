@@ -1,10 +1,18 @@
 
-<div class = "container">
-   <h1>Log In</h1>
-            <br>
+<div class="container">
+    <br>
     <div class="row">
+        <div class="col-11 text-center">
+            <h1 class="display-6">Log In</h1>
+            <br>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-3">
+        </div>
         
-        <div class="col-md-6 col-md-offset-3">
+        <div class="col-5 bg-light">
             
             <br>
             <%= form_with url: login_path do |f| %>
@@ -15,11 +23,16 @@
             <%= f.label :password %>
             <%= f.password_field :password, class: 'form-control' %>
             <br>
-            <%= f.submit "Log in", class: "btn btn-primary" %>
+            <div class="text-center">
+            <%= f.submit "Log in", class: "btn btn-dark" %>
             <% end %>
-            
-            
-
+            <br>
+             or <br>
+            <%= link_to('Login with Google!', '/auth/google_oauth2', method: :post) %>
+            <br><br>
+            </div>
+    
         </div>
+
     </div>
 </div>
