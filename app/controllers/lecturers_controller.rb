@@ -3,12 +3,7 @@ class LecturersController < ApplicationController
     
   
     def new
-        if logged_in?
-            @lecturer = Lecturer.new
-        else
-            flash[:error] = "Please login."
-            redirect_to "/"
-        end
+        @lecturer = Lecturer.new  
     end
 
   
