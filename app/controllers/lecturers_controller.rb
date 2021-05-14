@@ -23,14 +23,18 @@ class LecturersController < ApplicationController
     end 
 
     def show
-        if !@lecturer
-            redirect_to "/login"
+        if !@lecturer || !logged_in?
+            redirect_to "/"
         end
+    end
+
+    def index
+        redirect_to "/wrong_page"
     end
   
     def edit 
         if !@lecturer || @lecturer != current_lecturer
-                redirect_to "/wrong_page"
+            redirect_to "/wrong_page"
         end
     end 
   
