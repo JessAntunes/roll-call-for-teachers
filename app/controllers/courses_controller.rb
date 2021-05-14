@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
 
     def index
         if logged_in?
-            @courses = Course.ordered_list
+            @courses = Course.all
         else
             redirect_to "/login"
         end
