@@ -20,9 +20,9 @@ class StudentsController < ApplicationController
     end
 
     def show
-        if !@lecturer
+        if !logged_in? || !@student
             flash[:error] = "Please login."
-            redirect_to "/"
+            redirect_to "/wrong_page"
         end
     end
 
@@ -37,8 +37,8 @@ class StudentsController < ApplicationController
     end 
 
     def edit 
-        if !logged_in? 
-            redirect_to "/"
+        if !logged_in? || !@student
+            redirect_to "/wrong_page"
         end
     end 
   
