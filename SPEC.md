@@ -13,13 +13,17 @@ Specs:
 - [x] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user (attribute_name e.g. ingredients.quantity)
         The Lecturer can change a student's grade which is tracked in the join table Enrollment.
 - [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
-        Lecturer must have 
+        Lecturer must have unique email and  fullname, lastname. Student must have email, name, and degree. Course must have a subject.
 - [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
-- [ ] Include signup (how e.g. Devise)
-- [ ] Include login (how e.g. Devise)
-- [ ] Include logout (how e.g. Devise)
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
-- [ ] Include nested resource show or index (URL e.g. users/2/recipes)
+- [x] Include signup (how e.g. Devise)
+        Local and OmniAuth
+- [x] Include login (how e.g. Devise)
+        Local and OmniAuth
+- [x] Include logout (how e.g. Devise)
+        Local and OmniAuth
+- [x] Include third party signup/login (how e.g. Devise/OmniAuth)
+        OmniAuth
+- [x] Include nested resource show or index (URL e.g. users/2/recipes)
 - [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
 - [ ] Include form display of validation errors (form URL e.g. /recipes/new)
 Confirm:
