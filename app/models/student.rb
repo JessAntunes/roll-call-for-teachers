@@ -1,6 +1,7 @@
 class Student < ApplicationRecord
     has_many :enrollments, dependent: :destroy
     has_many :courses, through: :enrollments
+    validates_presence_of :name, :email, :degree
     
     def last_first
         full_name = self.name.split(' ')
