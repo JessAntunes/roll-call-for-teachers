@@ -10,10 +10,9 @@ class CoursesController < ApplicationController
         end
     end
 
-    def ordered_by_lecturer
+    def ordered_by_day
         if logged_in?
-            @courses = Course.order_by_lecturer
-            # render :ordered_by_lecturer.html
+            @courses = Course.order_by_day
         else
             redirect_to "/login"
         end
