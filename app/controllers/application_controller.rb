@@ -20,5 +20,6 @@ class ApplicationController < ActionController::Base
     def logged_in?
         !current_lecturer.nil?
     end
+    
 
 end
