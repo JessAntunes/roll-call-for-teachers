@@ -9,6 +9,15 @@ class CoursesController < ApplicationController
             redirect_to "/login"
         end
     end
+
+    def ordered_by_lecturer
+        if logged_in?
+            @courses = Course.order_by_lecturer
+            # render :ordered_by_lecturer.html
+        else
+            redirect_to "/login"
+        end
+    end
   
     def new
         if logged_in?
