@@ -24,10 +24,13 @@ Specs:
 - [x] Include third party signup/login (how e.g. Devise/OmniAuth)
         OmniAuth
 - [x] Include nested resource show or index (URL e.g. users/2/recipes)
-- [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
-- [ ] Include form display of validation errors (form URL e.g. /recipes/new)
+        Course nested in Lecturer. lecturers/:lecturer_id/courses
+- [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
+        lecturers/:lecturer_id/courses/new
+- [x] Include form display of validation errors (form URL e.g. /recipes/new)
+        sign in/new errors ... flash notices.
 Confirm:
 - [ ] The application is pretty DRY
-- [ ] Limited logic in controllers
-- [ ] Views use helper methods if appropriate
-- [ ] Views use partials if appropriate
+- [x] Limited logic in controllers
+- [x] Views use helper methods if appropriate
+- [x] Views use partials if appropriate
