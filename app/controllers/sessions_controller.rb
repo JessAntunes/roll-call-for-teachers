@@ -4,10 +4,10 @@ class SessionsController < ApplicationController
     end
     
     def create
-        @lecturer = Lecturer.find_by(email: params[:email])
-      if @lecturer && @lecturer.authenticate(params[:password])
-        session[:lecturerr_id] = @lecturer.id
-        redirect_to lecturer_path(@lecturer)
+        lecturer = Lecturer.find_by(email: params[:email])
+      if lecturer && lecturer.authenticate(params[:password])
+        session[:lecturer_id] = lecturer.id
+        redirect_to lecturer_path(lecturer)
       else
         flash[:notice] = "Email and/or Password are invalid. Please try again."
         redirect_to '/login'
@@ -15,19 +15,19 @@ class SessionsController < ApplicationController
     end
 
     def google
-      @lecturer = Lecturer.find_or_create_by(email: auth["info"]["email"]) do |lecturer| 
-          lecturer.password =  SecureRandom.hex(10)
-          lecturer.first_name = auth["info"]["first_name"]
-          lecturer.last_name = auth["info"]["last_name"]
+      lecturer = Lecturer.find_or_create_by(email: auth["info"]["email"]) do |l| 
+          l.password =  SecureRandom.hex(10)
+          l.first_name = auth["info"]["first_name"]
+          l.last_name = auth["info"]["last_name"]
       end 
-      if @lecturer && @lecturer.id
-          session[:lecturer_id] = @lecturer.id
-          redirect_to lecturer_path(@lecturer) 
+      if lecturer
+          session[:lecturer_id] = lecturer.id
+          redirect_to lecturer_path(lecturer) 
       else
          flash[:notice] = "Something went wrong."
           redirect_to "/"
       end 
-  end 
+    end 
   
     def destroy
       session.clear
