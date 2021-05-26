@@ -19,6 +19,7 @@ class LecturersController < ApplicationController
 
     def show
         if !logged_in?
+            flash[:error] = "Please login."
             redirect_to "/"
         end
     end
@@ -46,6 +47,7 @@ class LecturersController < ApplicationController
 
     def destroy
         @lecturer.destroy
+        flash[:notice] = "Account deleted successfully."
         redirect_to "/"
     end
 

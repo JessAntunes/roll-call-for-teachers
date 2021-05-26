@@ -2,18 +2,21 @@ class EnrollmentsController < ApplicationController
     before_action :find_enrollment, only: [:show, :edit, :update, :destroy]
   
     def new
-        redirect_to "/wrong_page"
+        flash[:error] = "Please login."
+        redirect_to "/"
     end
 
     def show
         if !logged_in?
-            redirect_to "/login"
+            flash[:error] = "Please login."
+            redirect_to "/"
         end
         @lecturer = @enrollment.course.lecturer
     end
 
     def index
-        redirect_to "wrong_page"
+        flash[:error] = "Please login."
+        redirect_to "/"
     end
 
     # def create
@@ -29,7 +32,8 @@ class EnrollmentsController < ApplicationController
         if logged_in? && @enrollment
             @lecturer = @enrollment.course.lecturer
         else
-            redirect_to "/login"
+            flash[:error] = "Please login."
+            redirect_to "/"
         end
     end 
   
@@ -38,12 +42,14 @@ class EnrollmentsController < ApplicationController
         if @enrollment.save
             redirect_to student_path(@enrollment.student)
         else
+            flash[:error] = "Please try again."
             render :edit
         end 
     end
 
     def destroy
         @enrollment.destroy
+        flash[:error] = "Deleted Successfully."
         redirect_to student_path(@enrollment.student)
     end
 
