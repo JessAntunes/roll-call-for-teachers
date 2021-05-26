@@ -14,7 +14,8 @@ Specs:
         The Lecturer can change a student's grade which is tracked in the join table Enrollment.
 - [x] Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)
         Lecturer must have unique email and  fullname, lastname. Student must have email, name, and degree. Course must have a subject.
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+        class method scope to organize Course by day and has its own route
 - [x] Include signup (how e.g. Devise)
         Local and OmniAuth
 - [x] Include login (how e.g. Devise)
@@ -30,7 +31,7 @@ Specs:
 - [x] Include form display of validation errors (form URL e.g. /recipes/new)
         sign in/new errors ... flash notices.
 Confirm:
-- [ ] The application is pretty DRY
+- [x] The application is pretty DRY
 - [x] Limited logic in controllers
 - [x] Views use helper methods if appropriate
 - [x] Views use partials if appropriate
