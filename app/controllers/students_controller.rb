@@ -19,6 +19,15 @@ class StudentsController < ApplicationController
         end
     end
 
+    def search
+        if params[:search].blank?  
+            redirect_to(root_path, alert: "Empty field!") and return  
+        else 
+            search_term = params[:search].downcase.gsub(/\s+/, "")
+            @students = Student.order_by_abc.select { |student| student.name.include?(search_term) }
+        end
+    end
+
     def show
         if !logged_in? || !@student
             flash[:error] = "Please login."

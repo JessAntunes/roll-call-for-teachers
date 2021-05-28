@@ -1,0 +1,43 @@
+<br>
+<div class="row">
+    <div class="col"></div>
+    <div class="col text-center">
+        <h2>Search Results</h2>
+        <>
+        <h5 class="text-muted">(with number of classes)</h5>
+        
+        <br/>
+    </div>
+    <div class="col"></div>
+
+</div>
+
+<div class="row">
+    <div class="col"></div>
+    <div class="col-8 bg-light">
+    <br>
+        <div class="row">
+            
+            <div class="col"></div>
+        
+            <div class="col-6">
+                <%if @students.empty?%>
+                    <h5>Sorry, No results matching your search criteria.</h5>
+                <%else%>
+                    <ul class="list-group">
+                        <%@students.each do |student|%>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <%= link_to student.name, student_path(student) %>
+                                <span class="badge badge-warning badge-pill"><%=student.enrollments.count%></span>
+                            </li>
+                        <%end%>
+                    </ul>
+                <%end%>
+                <br>
+            </div>
+
+            <div class="col"></div>
+        </div>
+    </div>
+    <div class="col"></div>
+</div>

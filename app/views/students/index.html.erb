@@ -7,8 +7,14 @@
         
         <br/>
     </div>
-    <div class="col text-center"><%=link_to "Add New Student", new_student_path, class: "btn btn-outline-dark btn-sm"%></div>
-
+    <div class="col text-center">
+    <%= form_tag(student_search_path, method: :get) do %>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag 'Search by Name', name: nil %>
+    <%end%>
+    <br>
+    <%=link_to "Add New Student", new_student_path, class: "btn btn-outline-dark btn-sm"%>
+    </div>
 </div>
 
 <div class="row">

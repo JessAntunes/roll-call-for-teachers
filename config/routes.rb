@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :students
+  get '/search' => 'students#search', :as => 'student_search'
   resources :lecturers do
     resources :courses, only: [:new, :show, :create, :edit, :update, :destroy]
   end
