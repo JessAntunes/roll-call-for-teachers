@@ -21,10 +21,10 @@ class StudentsController < ApplicationController
 
     def search
         if params[:search].blank?  
-            redirect_to(root_path, alert: "Empty field!") and return  
+            redirect_to(students_path, alert: "Empty field!") and return  
         else 
             search_term = params[:search].downcase.gsub(/\s+/, "")
-            @students = Student.order_by_abc.select { |student| student.name.include?(search_term) }
+            @students = Student.order_by_abc.select { |student| student.name.downcase.include?(search_term) }
         end
     end
 
