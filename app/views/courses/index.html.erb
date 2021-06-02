@@ -13,7 +13,8 @@
             <br>
 
             <ol class="list-group list-group-numbered">
-                <%@courses.order_by_subject.each do |c|%>
+    
+                <%@courses.each do |c|%>
                     <li class="list-group-item d-flex justify-content-between align-items-start"> 
                         <div class="ms-2 me-auto">
                             <div class="fw-bold"><%= link_to c.subject, lecturer_course_path(c.lecturer, c) %></div>
@@ -28,3 +29,7 @@
         </div>
    </div>
 </div>
+
+
+
+

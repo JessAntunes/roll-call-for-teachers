@@ -7,4 +7,7 @@ class Course < ApplicationRecord
 
   scope :order_by_subject, -> {order(subject: :asc)}
   scope :order_by_day, -> {order(day: :asc)}
+  
 end
+
+
