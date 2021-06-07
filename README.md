@@ -2,9 +2,12 @@
 
 The user for this application is a teacher/professor/lecturer who wishes to create various courses and add students easily to their courses to track courses, students enrolled, and their grades. If a student is not already in the system they can be added. All of the students' grades and courses they are enrolled in are viewable on the student page. By clicking on a student's grade they can be disenrolled from the course or have their grade changed. 
 
+### [View the Demo](https://youtu.be/IK4bGTv7UMw)
 <br>
 
 ![ScreenShot](app/assets/images/screenshot.png)
+
+
 
 ## Installation
 
